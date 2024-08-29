@@ -1,0 +1,24 @@
+CREATE DATABASE IF NOT EXISTS SchoolDB;
+USE SchoolDB;
+
+CREATE TABLE Etudiant (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nom VARCHAR(100),
+    Prenom VARCHAR(100),
+    Age INT
+);
+
+CREATE TABLE Prof (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Nom VARCHAR(100),
+    Prenom VARCHAR(100),
+    Matiere VARCHAR(100)
+);
+
+CREATE TABLE Cours (
+    Id INT AUTO_INCREMENT PRIMARY KEY,
+    Titre VARCHAR(100),
+    Description TEXT,
+    ProfId INT,
+    FOREIGN KEY (ProfId) REFERENCES Prof(Id)
+);
