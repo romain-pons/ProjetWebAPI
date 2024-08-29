@@ -5,6 +5,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configuration de DbContext
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 21)))
+);
+
 // Configuration de la connexion à la base de données MySQL
 builder.Services.AddDbContext<YourDbContext>(options =>
     options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
