@@ -1,3 +1,5 @@
+using ProjetWebAPI.Models;
+
 public class ProfService
 {
     private readonly DbContext _context;
@@ -7,23 +9,23 @@ public class ProfService
         _context = context;
     }
 
-    public async Task<IEnumerable<Prof>> GetAll()
+    public async Task<IEnumerable<Profs>> GetAll()
     {
         return await _context.Profs.ToListAsync();
     }
 
-    public async Task<Prof> GetById(int id)
+    public async Task<Profs> GetById(int id)
     {
         return await _context.Profs.FindAsync(id);
     }
 
-    public async Task Add(Prof prof)
+    public async Task Add(Profs prof)
     {
         _context.Profs.Add(prof);
         await _context.SaveChangesAsync();
     }
 
-    public async Task Update(Prof prof)
+    public async Task Update(Profs prof)
     {
         _context.Entry(prof).State = EntityState.Modified;
         await _context.SaveChangesAsync();

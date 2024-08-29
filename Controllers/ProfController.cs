@@ -1,47 +1,53 @@
-[ApiController]
-[Route("[controller]")]
-public class ProfController : ControllerBase
+using Microsoft.AspNetCore.Mvc;
+using ProjetWebAPI.Models;
+
+namespace ProjetWebAPI.Controllers
 {
-    private readonly ProfService _service;
-
-    public ProfController(ProfService service)
+    [ApiController]
+    [Route("[controller]")]
+    public class ProfController : ControllerBase
     {
-        _service = service;
-    }
+        private readonly ProfService _service;
 
-    [HttpGet]
-    public async Task<IActionResult> Get()
-    {
-        return Ok(await _service.GetAll());
-    }
+        public ProfController(ProfService service)
+        {
+            _service = service;
+        }
 
-    [HttpGet("{id}")]
-    public async Task<IActionResult> Get(int id)
-    {
-        var prof = await _service.GetById(id);
-        if (prof == null) return NotFound();
-        return Ok(prof);
-    }
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await _service.GetAll());
+        }
 
-    [HttpPost]
-    public async Task<IActionResult> Post([FromBody] Prof prof)
-    {
-        await _service.Add(prof);
-        return CreatedAtAction(nameof(Get), new { id = prof.Id }, prof);
-    }
+        [HttpGet("{id}")]
+        public async Task<IActionResult> Get(int id)
+        {
+            var prof = await _service.GetById(id);
+            if (prof == null) return NotFound();
+            return Ok(prof);
+        }
 
-    [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, [FromBody] Prof prof)
-    {
-        if (id != prof.Id) return BadRequest();
-        await _service.Update(prof);
-        return NoContent();
-    }
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] Profs prof)
+        {
+            await _service.Add(prof);
+            return CreatedAtAction(nameof(Get), new { id = prof.Id }, prof);
+        }
 
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> Delete(int id)
-    {
-        await _service.Delete(id);
-        return NoContent();
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, [FromBody] Profs prof)
+        {
+            if (id != prof.Id) return BadRequest();
+            await _service.Update(prof);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await _service.Delete(id);
+            return NoContent();
+        }
     }
 }

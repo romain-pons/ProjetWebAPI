@@ -1,3 +1,5 @@
+using ProjetWebAPI.Models;
+
 public class CourService
 {
     private readonly DbContext _context;
