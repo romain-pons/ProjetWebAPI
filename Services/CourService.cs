@@ -1,4 +1,5 @@
 using ProjetWebAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class CourService
 {

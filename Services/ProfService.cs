@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Models;
 
 public class ProfService
