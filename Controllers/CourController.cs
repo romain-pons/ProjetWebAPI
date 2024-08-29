@@ -2,9 +2,9 @@
 [Route("[controller]")]
 public class CourController : ControllerBase
 {
-    private readonly CoursService _service;
+    private readonly CourService _service;
 
-    public CourController(CoursService service)
+    public CourController(CourService service)
     {
         _service = service;
     }
