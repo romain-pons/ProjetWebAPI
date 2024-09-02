@@ -1,8 +1,8 @@
 -- Utiliser la base de données appropriée
 USE SchoolDB;
 
--- Insertion des données pour la table `Prof`
-INSERT INTO Prof
+-- Insertion des données pour la table `Profs`
+INSERT INTO Profs
     (Nom, Prenom, Matiere)
 VALUES
     ('Dupont', 'Jean', 'Mathématiques'),
@@ -10,8 +10,8 @@ VALUES
     ('Lambert', 'Paul', 'Chimie'),
     ('Bernard', 'Sophie', 'Histoire');
 
--- Insertion des données pour la table `Etudiant`
-INSERT INTO Etudiant
+-- Insertion des données pour la table `Etudiants`
+INSERT INTO Etudiants
     (Nom, Prenom, Age)
 VALUES
     ('Martin', 'Alice', 20),
@@ -24,14 +24,14 @@ INSERT INTO Cours
     (Titre, Description, ProfId)
 VALUES
     ('Algèbre', 'Introduction aux concepts fondamentaux de l''algèbre', (SELECT Id
-        FROM Prof
+        FROM Profs
         WHERE Nom = 'Dupont' AND Prenom = 'Jean')),
     ('Mécanique classique', 'Étude des lois de Newton et leurs applications', (SELECT Id
-        FROM Prof
+        FROM Profs
         WHERE Nom = 'Durand' AND Prenom = 'Marie')),
     ('Chimie organique', 'Comprendre la structure, propriétés, compositions, réactions, et préparation des composés carbonés', (SELECT Id
-        FROM Prof
+        FROM Profs
         WHERE Nom = 'Lambert' AND Prenom = 'Paul')),
     ('Révolutions françaises', 'Analyse détaillée des révolutions françaises à travers l''histoire', (SELECT Id
-        FROM Prof
+        FROM Profs
         WHERE Nom = 'Bernard' AND Prenom = 'Sophie'));
