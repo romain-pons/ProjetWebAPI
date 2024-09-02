@@ -2,11 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Data;
 using ProjetWebAPI.Models;
 
-public class ProfService
+public class ProfsService
 {
     private readonly AppDbContext _context;
 
-    public ProfService(AppDbContext context)
+    public ProfsService(AppDbContext context)
     {
         _context = context;
     }

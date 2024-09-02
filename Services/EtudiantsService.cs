@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Data;
 
 
-public class EtudiantService
+public class EtudiantsService
 {
     private readonly AppDbContext _context;
 
-    public EtudiantService(AppDbContext context)
+    public EtudiantsService(AppDbContext context)
     {
         _context = context;
     }

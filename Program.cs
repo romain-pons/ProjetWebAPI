@@ -40,9 +40,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 );
 
 // Ajouter les services personnalisés
-builder.Services.AddScoped<EtudiantService>();
-builder.Services.AddScoped<ProfService>();
-builder.Services.AddScoped<CourService>();
+builder.Services.AddScoped<EtudiantsService>();
+builder.Services.AddScoped<ProfsService>();
+builder.Services.AddScoped<CoursService>();
 
 var app = builder.Build();
 

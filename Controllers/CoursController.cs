@@ -5,11 +5,11 @@ namespace ProjetWebAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CourController : ControllerBase
+    public class CoursController : ControllerBase
     {
-        private readonly CourService _service;
+        private readonly CoursService _service;
 
-        public CourController(CourService service)
+        public CoursController(CoursService service)
         {
             _service = service;
         }
