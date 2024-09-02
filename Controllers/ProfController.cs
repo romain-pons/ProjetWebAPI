@@ -15,10 +15,10 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Récupère tous les professeurs.
+        /// Rï¿½cuperer tous les professeurs.
         /// </summary>
         /// <remarks>
-        /// Cet endpoint retourne la liste de tous les professeurs disponibles dans le système.
+        /// Cet endpoint retourne la liste de tous les professeurs disponibles dans le systeme.
         /// </remarks>
         /// <response code="200">Retourne la liste des professeurs.</response>
         [HttpGet]
@@ -29,14 +29,14 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Récupère un professeur spécifique par ID.
+        /// Rï¿½cupï¿½re un professeur specifique par ID.
         /// </summary>
-        /// <param name="id">L'ID du professeur à récupérer.</param>
+        /// <param name="id">L'ID du professeur a recuperer.</param>
         /// <remarks>
-        /// Cet endpoint retourne un professeur unique basé sur l'ID fourni.
+        /// Cet endpoint retourne un professeur unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourne le professeur demandé.</response>
-        /// <response code="404">Si le professeur n'est pas trouvé.</response>
+        /// <response code="200">Retourne le professeur demande.</response>
+        /// <response code="404">Si le professeur n'est pas trouve.</response>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -46,13 +46,13 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Crée un nouveau professeur.
+        /// Creer un nouveau professeur.
         /// </summary>
-        /// <param name="prof">L'objet professeur à créer.</param>
+        /// <param name="prof">L'objet professeur a creer.</param>
         /// <remarks>
-        /// Cet endpoint crée un nouveau professeur dans le système.
+        /// Cet endpoint cree un nouveau professeur dans le systeme.
         /// </remarks>
-        /// <response code="201">Le professeur a été créé avec succès.</response>
+        /// <response code="201">Le professeur a ete cree avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Profs prof)
@@ -64,21 +64,21 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Met à jour un professeur existant.
+        /// Met a jour un professeur existant.
         /// </summary>
-        /// <param name="id">L'ID du professeur à mettre à jour.</param>
-        /// <param name="prof">L'objet professeur mis à jour.</param>
+        /// <param name="id">L'ID du professeur a mettre a jour.</param>
+        /// <param name="prof">L'objet professeur mis a jour.</param>
         /// <remarks>
-        /// Cet endpoint met à jour un professeur existant dans le système.
+        /// Cet endpoint met a jour un professeur existant dans le systeme.
         /// </remarks>
-        /// <response code="204">Le professeur a été mis à jour avec succès.</response>
-        /// <response code="400">Si l'ID dans l'URL ne correspond pas à l'ID dans le corps de la demande, ou si la demande est invalide.</response>
-        /// <response code="404">Si le professeur à mettre à jour n'est pas trouvé.</response>
+        /// <response code="204">Le professeur a ete mis a jour avec succes.</response>
+        /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
+        /// <response code="404">Si le professeur a mettre a jour n'est pas trouve.</response>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Profs prof)
         {
             if (prof == null) return BadRequest("L'objet professeur est nul.");
-            if (id != prof.Id) return BadRequest("Incohérence d'ID.");
+            if (id != prof.Id) return BadRequest("Incohï¿½rence d'ID.");
 
             var professeurExistant = await _service.GetById(id);
             if (professeurExistant == null) return NotFound();
@@ -88,14 +88,14 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Supprime un professeur par ID.
+        /// Supprimer un professeur par ID.
         /// </summary>
-        /// <param name="id">L'ID du professeur à supprimer.</param>
+        /// <param name="id">L'ID du professeur a supprimer.</param>
         /// <remarks>
-        /// Cet endpoint supprime un professeur du système basé sur l'ID fourni.
+        /// Cet endpoint supprime un professeur du systeme base sur l'ID fourni.
         /// </remarks>
-        /// <response code="204">Le professeur a été supprimé avec succès.</response>
-        /// <response code="404">Si le professeur à supprimer n'est pas trouvé.</response>
+        /// <response code="204">Le professeur a ete supprime avec succes.</response>
+        /// <response code="404">Si le professeur a supprimer n'est pas trouve.</response>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

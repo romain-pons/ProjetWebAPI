@@ -15,10 +15,10 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Récupère tous les cours.
+        /// Recuperer tous les cours.
         /// </summary>
         /// <remarks>
-        /// Cet endpoint retourne la liste de tous les cours disponibles dans le système.
+        /// Cet endpoint retourne la liste de tous les cours disponibles dans le systeme.
         /// </remarks>
         /// <response code="200">Retourne la liste des cours.</response>
         [HttpGet]
@@ -29,14 +29,14 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Récupère un cours spécifique par ID.
+        /// Recuperer un cours specifique par ID.
         /// </summary>
-        /// <param name="id">L'ID du cours à récupérer.</param>
+        /// <param name="id">L'ID du cours a recuperer.</param>
         /// <remarks>
-        /// Cet endpoint retourne un cours unique basé sur l'ID fourni.
+        /// Cet endpoint retourne un cours unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourne le cours demandé.</response>
-        /// <response code="404">Si le cours n'est pas trouvé.</response>
+        /// <response code="200">Retourne le cours demande.</response>
+        /// <response code="404">Si le cours n'est pas trouve.</response>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -46,13 +46,13 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Crée un nouveau cours.
+        /// Creer un nouveau cours.
         /// </summary>
-        /// <param name="cours">L'objet cours à créer.</param>
+        /// <param name="cours">L'objet cours a creer.</param>
         /// <remarks>
-        /// Cet endpoint crée un nouveau cours dans le système.
+        /// Cet endpoint cree un nouveau cours dans le systeme.
         /// </remarks>
-        /// <response code="201">Le cours a été créé avec succès.</response>
+        /// <response code="201">Le cours a ete cree avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Cours cours)
@@ -64,21 +64,21 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Met à jour un cours existant.
+        /// Met a jour un cours existant.
         /// </summary>
-        /// <param name="id">L'ID du cours à mettre à jour.</param>
-        /// <param name="cours">L'objet cours mis à jour.</param>
+        /// <param name="id">L'ID du cours a mettre a jour.</param>
+        /// <param name="cours">L'objet cours mis a jour.</param>
         /// <remarks>
-        /// Cet endpoint met à jour un cours existant dans le système.
+        /// Cet endpoint met a jour un cours existant dans le systeme.
         /// </remarks>
-        /// <response code="204">Le cours a été mis à jour avec succès.</response>
-        /// <response code="400">Si l'ID dans l'URL ne correspond pas à l'ID dans le corps de la demande, ou si la demande est invalide.</response>
-        /// <response code="404">Si le cours à mettre à jour n'est pas trouvé.</response>
+        /// <response code="204">Le cours a ete mis a jour avec succes.</response>
+        /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
+        /// <response code="404">Si le cours a mettre a jour n'est pas trouve.</response>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Cours cours)
         {
             if (cours == null) return BadRequest("L'objet cours est nul.");
-            if (id != cours.Id) return BadRequest("Incohérence d'ID.");
+            if (id != cours.Id) return BadRequest("Incohï¿½rence d'ID.");
 
             var coursExistant = await _service.GetById(id);
             if (coursExistant == null) return NotFound();
@@ -90,12 +90,12 @@ namespace ProjetWebAPI.Controllers
         /// <summary>
         /// Supprime un cours par ID.
         /// </summary>
-        /// <param name="id">L'ID du cours à supprimer.</param>
+        /// <param name="id">L'ID du cours a supprimer.</param>
         /// <remarks>
-        /// Cet endpoint supprime un cours du système basé sur l'ID fourni.
+        /// Cet endpoint supprime un cours du systï¿½me base sur l'ID fourni.
         /// </remarks>
-        /// <response code="204">Le cours a été supprimé avec succès.</response>
-        /// <response code="404">Si le cours à supprimer n'est pas trouvé.</response>
+        /// <response code="204">Le cours a ete supprime avec succes.</response>
+        /// <response code="404">Si le cours a supprimer n'est pas trouve.</response>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
