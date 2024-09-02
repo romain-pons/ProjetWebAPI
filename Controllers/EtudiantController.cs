@@ -15,12 +15,12 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// R�cuperer tous les etudiants.
+        /// Recuperer tous les etudiants.
         /// </summary>
         /// <remarks>
         /// Cet endpoint retourne la liste de tous les etudiants disponibles dans le systeme.
         /// </remarks>
-        /// <response code="200">Retourne la liste des etudiants.</response>
+        /// <response code="200">Retourner la liste des etudiants.</response>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -35,7 +35,7 @@ namespace ProjetWebAPI.Controllers
         /// <remarks>
         /// Cet endpoint retourne un etudiant unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourne l'etudiant demande.</response>
+        /// <response code="200">Retourner l'etudiant demande.</response>
         /// <response code="404">Si l'etudiant n'est pas trouve.</response>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -64,7 +64,7 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Met a jour un etudiant existant.
+        /// Mettre a jour un etudiant existant.
         /// </summary>
         /// <param name="id">L'ID de l'etudiant a mettre a jour.</param>
         /// <param name="etudiant">L'objet etudiant mis a jour.</param>
@@ -88,7 +88,7 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Supprime un etudiant par ID.
+        /// Supprimer un etudiant par ID.
         /// </summary>
         /// <param name="id">L'ID de l'etudiant a supprimer.</param>
         /// <remarks>

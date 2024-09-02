@@ -15,12 +15,12 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// R�cuperer tous les professeurs.
+        /// Recuperer tous les professeurs.
         /// </summary>
         /// <remarks>
         /// Cet endpoint retourne la liste de tous les professeurs disponibles dans le systeme.
         /// </remarks>
-        /// <response code="200">Retourne la liste des professeurs.</response>
+        /// <response code="200">Retourner la liste des professeurs.</response>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -29,13 +29,13 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// R�cup�re un professeur specifique par ID.
+        /// Recuperer un professeur specifique par ID.
         /// </summary>
         /// <param name="id">L'ID du professeur a recuperer.</param>
         /// <remarks>
         /// Cet endpoint retourne un professeur unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourne le professeur demande.</response>
+        /// <response code="200">Retourner le professeur demande.</response>
         /// <response code="404">Si le professeur n'est pas trouve.</response>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -64,7 +64,7 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Met a jour un professeur existant.
+        /// Mettre a jour un professeur existant.
         /// </summary>
         /// <param name="id">L'ID du professeur a mettre a jour.</param>
         /// <param name="prof">L'objet professeur mis a jour.</param>

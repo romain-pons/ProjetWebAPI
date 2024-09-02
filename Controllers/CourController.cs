@@ -20,7 +20,7 @@ namespace ProjetWebAPI.Controllers
         /// <remarks>
         /// Cet endpoint retourne la liste de tous les cours disponibles dans le systeme.
         /// </remarks>
-        /// <response code="200">Retourne la liste des cours.</response>
+        /// <response code="200">Retourner la liste des cours.</response>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -35,7 +35,7 @@ namespace ProjetWebAPI.Controllers
         /// <remarks>
         /// Cet endpoint retourne un cours unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourne le cours demande.</response>
+        /// <response code="200">Retourner le cours demande.</response>
         /// <response code="404">Si le cours n'est pas trouve.</response>
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -64,7 +64,7 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Met a jour un cours existant.
+        /// Mettre a jour un cours existant.
         /// </summary>
         /// <param name="id">L'ID du cours a mettre a jour.</param>
         /// <param name="cours">L'objet cours mis a jour.</param>
@@ -88,7 +88,7 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Supprime un cours par ID.
+        /// Supprimer un cours par ID.
         /// </summary>
         /// <param name="id">L'ID du cours a supprimer.</param>
         /// <remarks>
