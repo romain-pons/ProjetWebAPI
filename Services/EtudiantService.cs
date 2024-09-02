@@ -1,12 +1,13 @@
 using ProjetWebAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using ProjetWebAPI.Data;
 
 
 public class EtudiantService
 {
-    private readonly DbContext _context;
+    private readonly AppDbContext _context;
 
-    public EtudiantService(DbContext context)
+    public EtudiantService(AppDbContext context)
     {
         _context = context;
     }

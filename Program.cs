@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using ProjetWebAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Ajouter les services à l'injection de dépendances
@@ -7,12 +10,11 @@ builder.Services.AddSwaggerGen();
 
 // Configuration de DbContext
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 21)))
+    options.UseMySql(
+        builder.Configuration.GetConnectionString("DefaultConnection"),
+        new MySqlServerVersion(new Version(8, 0, 21))
+    )
 );
-
-// Configuration de la connexion à la base de données MySQL
-builder.Services.AddDbContext<YourDbContext>(options =>
-    options.UseMySQL(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Ajouter les services personnalisés
 builder.Services.AddScoped<EtudiantService>();

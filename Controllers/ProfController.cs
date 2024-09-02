@@ -4,7 +4,7 @@ using ProjetWebAPI.Models;
 namespace ProjetWebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class ProfController : ControllerBase
     {
         private readonly ProfService _service;
@@ -14,6 +14,7 @@ namespace ProjetWebAPI.Controllers
             _service = service;
         }
 
+        // GET: api/...
         [HttpGet]
         public async Task<IActionResult> Get()
         {

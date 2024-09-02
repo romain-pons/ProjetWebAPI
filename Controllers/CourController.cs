@@ -4,7 +4,7 @@ using ProjetWebAPI.Models;
 namespace ProjetWebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class CourController : ControllerBase
     {
         private readonly CourService _service;
