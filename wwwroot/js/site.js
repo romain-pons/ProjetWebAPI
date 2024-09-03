@@ -1,4 +1,4 @@
-﻿const uri = 'api/Cour';
+﻿const uri = 'api/Cours';
 let todos = [];
 
 function getItems() {
