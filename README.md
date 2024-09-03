@@ -2,7 +2,9 @@
 
 ## Contributeurs
 Julien LAY - [GitHub](https://github.com/JulienLAY)
+
 Romain PONS - [GitHub](https://github.com/romain-pons)
+
 Adrien AUTEF - [GitHub](https://github.com/AdrienAUTEF)
 
 ## Description
