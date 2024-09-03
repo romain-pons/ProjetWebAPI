@@ -71,7 +71,7 @@ Vous pouvez maintenant lancer l'application. Assurez-vous d'être dans le réperto
 dotnet run
 ```
 
-L'API sera accessible par défaut à l'adresse suivante : https://localhost:5001 ou http://localhost:5000.
+L'API sera accessible à l'adresse suivante : https://localhost:7173.
 
 ### 5. Accéder à Swagger
 
