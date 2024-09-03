@@ -42,14 +42,14 @@ Vous devez configurer une base de données MySQL pour le projet. Vous pouvez soit
 
 Créer la base de données
 Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
-```
+```SQL
 CREATE DATABASE SchoolDB;
 ```
 
 ## Mettre à jour la chaîne de connexion
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
 
-```
+```json
 "ConnectionStrings": {
   "DefaultConnection": "server=<votre_serveur>;port=3306;database=SchoolDB;user=<votre_utilisateur>;password=<votre_mot_de_passe>;sslmode=required;"
 }
@@ -59,7 +59,7 @@ Remplacez <votre_serveur>, <votre_utilisateur>, et <votre_mot_de_passe> par les 
 
 ### 3. Appliquer les migrations de la base de données
 Une fois la base de données créée et la chaîne de connexion configurée, appliquez les migrations pour initialiser la base de données avec les tables nécessaires :
-```
+```cmd
 dotnet ef database update
 ```
 
@@ -67,7 +67,7 @@ dotnet ef database update
 
 Vous pouvez maintenant lancer l'application. Assurez-vous d'être dans le répertoire racine du projet, puis exécutez :
 
-```
+```cmd
 dotnet run
 ```
 
@@ -77,7 +77,7 @@ L'API sera accessible par défaut à l'adresse suivante : https://localhost:5001 o
 
 Swagger est intégré pour la documentation et le test de l'API. Une fois l'application en cours d'exécution, ouvrez votre navigateur et accédez à :
 
-```
+```URL
 https://localhost:7173/swagger/index.html
 ```
 
@@ -87,6 +87,6 @@ A MODIFIER
 
 Le projet contient un front-end simple dans le dossier wwwroot. Vous pouvez y accéder en ouvrant directement :
 
-```
+```URL
 https://localhost:7173/index.html
 ```
