@@ -6,7 +6,6 @@ using ProjetWebAPI.Models;
 
 namespace ProjetWebAPI.Controllers
 {
-    [Authorize(Roles = "Professor")]
     [ApiController]
     [Route("api/[controller]")]
     public class CoursController : ControllerBase
@@ -27,8 +26,8 @@ namespace ProjetWebAPI.Controllers
         /// Cet endpoint retourne la liste de tous les cours disponibles dans le système.
         /// </remarks>
         /// <response code="200">Retourne la liste des cours.</response>
+        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet]
-        [Authorize(Roles = "Student")]
         public async Task<IActionResult> Get()
         {
             var cours = await _service.GetAll();
@@ -46,7 +45,6 @@ namespace ProjetWebAPI.Controllers
         /// <response code="404">Si le cours n'est pas trouvé.</response>
         [Authorize(Roles = "Seller,Administrator")]
         [HttpGet("{id}")]
-        [Authorize(Roles = "Student")]
         public async Task<IActionResult> Get(int id)
         {
             var cours = await _service.GetById(id);

@@ -54,7 +54,7 @@ namespace ProjetWebAPI.Controllers
               _config["Jwt:Audience"],
               claims,
               expires: DateTime.Now.AddMinutes(15),
-              signingCredentials: credentials);
+            signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
