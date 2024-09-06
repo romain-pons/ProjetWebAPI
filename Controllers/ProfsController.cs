@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Models;
 
 namespace ProjetWebAPI.Controllers
@@ -78,14 +79,29 @@ namespace ProjetWebAPI.Controllers
         public async Task<IActionResult> Put(int id, [FromBody] Profs prof)
         {
             if (prof == null) return BadRequest("L'objet professeur est nul.");
-            if (id != prof.Id) return BadRequest("Incoh�rence d'ID.");
+            if (id != prof.Id) return BadRequest("Incohérence d'ID.");
 
+            // Récupérer l'entité existante
             var professeurExistant = await _service.GetById(id);
             if (professeurExistant == null) return NotFound();
 
-            await _service.Update(prof);
+            // Mettre à jour manuellement les propriétés
+            professeurExistant.Nom = prof.Nom;
+            professeurExistant.Prenom = prof.Prenom;
+            professeurExistant.Matiere = prof.Matiere;
+
+            try
+            {
+                await _service.Update(professeurExistant);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return StatusCode(500, "Erreur lors de la mise à jour.");
+            }
+
             return NoContent();
         }
+
 
         /// <summary>
         /// Supprimer un professeur par ID.
