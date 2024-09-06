@@ -44,6 +44,7 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourne le cours demandé.</response>
         /// <response code="404">Si le cours n'est pas trouvé.</response>
+        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet("{id}")]
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> Get(int id)
