@@ -62,7 +62,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="201">Le cours a été créé avec succès.</response>
         /// <response code="400">Si la demande est invalide ou si le professeur n'existe pas.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Cours cours)
         {
@@ -87,7 +86,6 @@ namespace ProjetWebAPI.Controllers
         /// <response code="204">Le cours a été mis à jour avec succès.</response>
         /// <response code="400">Si l'ID dans l'URL ne correspond pas à l'ID dans le corps de la demande ou si le professeur n'existe pas.</response>
         /// <response code="404">Si le cours à mettre à jour n'est pas trouvé.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Cours updatedCours)
         {
@@ -129,7 +127,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="204">Le cours a été supprimé avec succès.</response>
         /// <response code="404">Si le cours à supprimer n'est pas trouvé.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
