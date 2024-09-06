@@ -7,6 +7,7 @@ using Microsoft.OpenApi.Models;
 using ProjetWebAPI.Data;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -82,13 +83,31 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         ValidAudience = builder.Configuration["Jwt:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
                     };
-                });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Administrator", policy => policy.RequireRole("Administrator"));
-    options.AddPolicy("Seller", policy => policy.RequireRole("Seller"));
-});
+                    // Gestion des événements d'authentification
+                    options.Events = new JwtBearerEvents
+                    {
+                        // Gestion des utilisateurs non authentifiés
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonSerializer.Serialize(new { message = "Accès refusé : Vous devez être authentifié pour accéder à cette route." });
+                            return context.Response.WriteAsync(result);
+                        },
+
+                        // Gestion des utilisateurs authentifiés mais sans le rôle adéquat
+                        OnForbidden = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonSerializer.Serialize(new { message = "Accès interdit : Vous n'avez pas les droits nécessaires pour accéder à cette route." });
+                            return context.Response.WriteAsync(result);
+                        }
+                    };
+                });
 
 // Ajouter les services personnalisés
 builder.Services.AddScoped<EtudiantsService>();
@@ -103,7 +122,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseStaticFiles(); // Cette ligne permet de servir les fichiers statiques dans wwwroot
 
 app.UseHttpsRedirection();
 

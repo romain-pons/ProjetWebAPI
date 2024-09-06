@@ -10,46 +10,32 @@ namespace ProjetWebAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet("Admins")]
-        [Authorize(Roles = "Administrator")]
-        public IActionResult AdminsEndpoint()
+        [HttpGet("Professors")]
+        [Authorize(Roles = "Professor")]
+        public IActionResult ProfessorsEndpoint()
         {
-            var currentUser = GetUserModelFromClaims();
-
-            if (currentUser == null || currentUser.Role != "Administrator")
-            {
-                return Unauthorized();
-            }
+            var currentUser = GetCurrentUser();
 
             return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
         }
 
-        [HttpGet("Sellers")]
-        [Authorize(Roles = "Seller")]
-        public IActionResult SellersEndpoint()
-        {
-            var currentUser = GetUserModelFromClaims();
 
-            if (currentUser == null || currentUser.Role != "Seller")
-            {
-                return Unauthorized();
-            }
+        [HttpGet("Students")]
+        [Authorize(Roles = "Student")]
+        public IActionResult StudentsEndpoint()
+        {
+            var currentUser = GetCurrentUser();
 
             return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Role}");
         }
 
-        [HttpGet("AdminsAndSellers")]
-        [Authorize(Roles = "Administrator,Seller")]
-        public IActionResult AdminsAndSellersEndpoint()
+        [HttpGet("ProfessorsAndStudents")]
+        [Authorize(Roles = "Professor,Student")]
+        public IActionResult ProfessorsAndStudentsEndpoint()
         {
-            var currentUser = GetUserModelFromClaims();
+            var currentUser = GetCurrentUser();
 
-            if (currentUser == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Role}");
+            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
         }
 
         [HttpGet("Public")]
@@ -58,25 +44,7 @@ namespace ProjetWebAPI.Controllers
             return Ok("Hi, you're on public property");
         }
 
-        [HttpGet("CurrentUser")]
-        [Authorize]
-        public IActionResult GetCurrentUser()
-        {
-            var currentUser = GetUserModelFromClaims();
-
-            if (currentUser == null)
-            {
-                return Unauthorized();
-            }
-
-            return Ok(new
-            {
-                Username = currentUser.Username,
-                Role = currentUser.Role
-            });
-        }
-
-        private UserModel GetUserModelFromClaims()
+        private UserModel GetCurrentUser()
         {
             var identity = HttpContext.User.Identity as ClaimsIdentity;
 
@@ -96,5 +64,4 @@ namespace ProjetWebAPI.Controllers
             return null;
         }
     }
-
 }
