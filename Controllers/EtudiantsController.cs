@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Models;
@@ -23,7 +22,6 @@ namespace ProjetWebAPI.Controllers
         /// Cet endpoint retourne la liste de tous les etudiants disponibles dans le systeme.
         /// </remarks>
         /// <response code="200">Retourner la liste des etudiants.</response>
-        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -40,7 +38,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourner l'etudiant demande.</response>
         /// <response code="404">Si l'etudiant n'est pas trouve.</response>
-        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -58,7 +55,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="201">L'etudiant a ete cree avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Etudiants etudiant)
         {
@@ -79,7 +75,6 @@ namespace ProjetWebAPI.Controllers
         /// <response code="204">L'etudiant a ete mis a jour avec succes.</response>
         /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
         /// <response code="404">Si l'etudiant a mettre a jour n'est pas trouve.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] Etudiants etudiant)
         {
@@ -116,7 +111,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="204">L'etudiant a ete supprime avec succes.</response>
         /// <response code="404">Si l'etudiant a supprimer n'est pas trouve.</response>
-        [Authorize(Roles = "Administrator")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

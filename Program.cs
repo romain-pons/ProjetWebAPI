@@ -84,12 +84,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                     };
                 });
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("Administrator", policy => policy.RequireRole("Administrator"));
-    options.AddPolicy("Seller", policy => policy.RequireRole("Seller"));
-});
-
 // Ajouter les services personnalisés
 builder.Services.AddScoped<EtudiantsService>();
 builder.Services.AddScoped<ProfsService>();
@@ -103,7 +97,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.UseStaticFiles(); // Cette ligne permet de servir les fichiers statiques dans wwwroot
 
 app.UseHttpsRedirection();
 

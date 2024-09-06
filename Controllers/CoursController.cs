@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Data;
@@ -26,7 +25,6 @@ namespace ProjetWebAPI.Controllers
         /// Cet endpoint retourne la liste de tous les cours disponibles dans le système.
         /// </remarks>
         /// <response code="200">Retourne la liste des cours.</response>
-        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -43,7 +41,6 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourne le cours demandé.</response>
         /// <response code="404">Si le cours n'est pas trouvé.</response>
-        [Authorize(Roles = "Seller,Administrator")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {

@@ -4,10 +4,11 @@
     {
         public static List<UserModel> Users = new List<UserModel>()
         {
-            new UserModel() { Username = "thomas", EmailAddress = "contact@tbdc.com", Password = "MyPass_w0rd", GivenName = "Thomas", Surname = "Thomas", Role = "Administrator" },
-            new UserModel() { Username = "julien", EmailAddress = "julien@edu.igensia.com", Password = "MyPass_w0rd", GivenName = "Julien", Surname = "Julien", Role = "Seller" },
-            new UserModel() { Username = "romain", EmailAddress = "romain@edu.igensia.com", Password = "MyPass_w0rd", GivenName = "Romain", Surname = "Romain", Role = "Seller" },
-            new UserModel() { Username = "adrien", EmailAddress = "adrien@edu.igensia.com", Password = "MyPass_w0rd", GivenName = "Adrien", Surname = "Adrien", Role = "Seller" }
+            new UserModel() { Username = "jason_admin", EmailAddress = "jason.admin@email.com", Password = "MyPass_w0rd", GivenName = "Jason", Surname = "Bryant", Role = "Administrator" },
+            new UserModel() { Username = "julien", EmailAddress = "julien.admin@email.com", Password = "MyPass_w0rd", GivenName = "Julien", Surname = "Bryant", Role = "Administrator" },
+            new UserModel() { Username = "romain", EmailAddress = "romain.admin@email.com", Password = "MyPass_w0rd", GivenName = "Romain", Surname = "Bryant", Role = "Administrator" },
+            new UserModel() { Username = "adrien", EmailAddress = "adrien.admin@email.com", Password = "MyPass_w0rd", GivenName = "Adrien", Surname = "Bryant", Role = "Administrator" },
+            new UserModel() { Username = "elyse", EmailAddress = "elyse.seller@email.com", Password = "MyPass_w0rd", GivenName = "Elyse", Surname = "Lambert", Role = "Seller" },
         };
     }
 }
