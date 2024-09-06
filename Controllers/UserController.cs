@@ -16,7 +16,7 @@ namespace ProjetWebAPI.Controllers
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Roles}");
+            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
         }
 
 
@@ -26,7 +26,7 @@ namespace ProjetWebAPI.Controllers
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Roles}");
+            return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Role}");
         }
 
         [HttpGet("ProfessorsAndStudents")]
@@ -35,7 +35,7 @@ namespace ProjetWebAPI.Controllers
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Roles}");
+            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
         }
 
         [HttpGet("Public")]
@@ -58,7 +58,7 @@ namespace ProjetWebAPI.Controllers
                     EmailAddress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
                     GivenName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
                     Surname = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
-                    Roles = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+                    Role = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
                 };
             }
             return null;
