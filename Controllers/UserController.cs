@@ -10,32 +10,32 @@ namespace ProjetWebAPI.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet("Admins")]
-        [Authorize]
-        public IActionResult AdminsEndpoint()
+        [HttpGet("Professors")]
+        [Authorize(Roles = "Professor")]
+        public IActionResult ProfessorsEndpoint()
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
+            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Roles}");
         }
 
 
-        [HttpGet("Sellers")]
-        [Authorize(Roles = "Seller")]
-        public IActionResult SellersEndpoint()
+        [HttpGet("Students")]
+        [Authorize(Roles = "Student")]
+        public IActionResult StudentsEndpoint()
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Role}");
+            return Ok($"Hi {currentUser.GivenName}, you are a {currentUser.Roles}");
         }
 
-        [HttpGet("AdminsAndSellers")]
-        [Authorize(Roles = "Administrator,Seller")]
-        public IActionResult AdminsAndSellersEndpoint()
+        [HttpGet("ProfessorsAndStudents")]
+        [Authorize(Roles = "Professor,Student")]
+        public IActionResult ProfessorsAndStudentsEndpoint()
         {
             var currentUser = GetCurrentUser();
 
-            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Role}");
+            return Ok($"Hi {currentUser.GivenName}, you are an {currentUser.Roles}");
         }
 
         [HttpGet("Public")]
@@ -58,7 +58,7 @@ namespace ProjetWebAPI.Controllers
                     EmailAddress = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Email)?.Value,
                     GivenName = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.GivenName)?.Value,
                     Surname = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Surname)?.Value,
-                    Role = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
+                    Roles = userClaims.FirstOrDefault(o => o.Type == ClaimTypes.Role)?.Value
                 };
             }
             return null;

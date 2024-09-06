@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Data;
@@ -26,6 +27,7 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourne la liste des cours.</response>
         [HttpGet]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get()
         {
             var cours = await _service.GetAll();
@@ -42,6 +44,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="200">Retourne le cours demandé.</response>
         /// <response code="404">Si le cours n'est pas trouvé.</response>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get(int id)
         {
             var cours = await _service.GetById(id);
@@ -59,6 +62,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="201">Le cours a été créé avec succès.</response>
         /// <response code="400">Si la demande est invalide ou si le professeur n'existe pas.</response>
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Post([FromBody] Cours cours)
         {
             if (cours == null) return BadRequest("L'objet cours est nul.");
@@ -83,6 +87,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="400">Si l'ID dans l'URL ne correspond pas à l'ID dans le corps de la demande ou si le professeur n'existe pas.</response>
         /// <response code="404">Si le cours à mettre à jour n'est pas trouvé.</response>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Put(int id, [FromBody] Cours updatedCours)
         {
             if (updatedCours == null) return BadRequest("L'objet cours est nul.");
@@ -124,6 +129,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="204">Le cours a été supprimé avec succès.</response>
         /// <response code="404">Si le cours à supprimer n'est pas trouvé.</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Delete(int id)
         {
             var coursExistant = await _service.GetById(id);

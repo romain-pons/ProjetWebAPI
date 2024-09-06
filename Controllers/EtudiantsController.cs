@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Models;
@@ -23,6 +24,7 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourner la liste des etudiants.</response>
         [HttpGet]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get()
         {
             var etudiants = await _service.GetAll();
@@ -39,6 +41,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="200">Retourner l'etudiant demande.</response>
         /// <response code="404">Si l'etudiant n'est pas trouve.</response>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get(int id)
         {
             var etudiant = await _service.GetById(id);
@@ -47,35 +50,37 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Creer un nouvel etudiant.
+        /// Créer un nouvel étudiant.
         /// </summary>
-        /// <param name="etudiant">L'objet etudiant a creer.</param>
+        /// <param name="etudiant">L'objet étudiant a créer.</param>
         /// <remarks>
-        /// Cet endpoint cree un nouvel etudiant dans le systeme.
+        /// Cet endpoint crée un nouvel étudiant dans le système.
         /// </remarks>
-        /// <response code="201">L'etudiant a ete cree avec succes.</response>
+        /// <response code="201">L'etudiant a été créé avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Post([FromBody] Etudiants etudiant)
         {
-            if (etudiant == null) return BadRequest("L'objet �tudiant est nul.");
+            if (etudiant == null) return BadRequest("L'objet étudiant est nul.");
 
             await _service.Add(etudiant);
             return CreatedAtAction(nameof(Get), new { id = etudiant.Id }, etudiant);
         }
 
         /// <summary>
-        /// Mettre a jour un etudiant existant.
+        /// Mettre à jour un étudiant existant.
         /// </summary>
-        /// <param name="id">L'ID de l'etudiant a mettre a jour.</param>
-        /// <param name="etudiant">L'objet etudiant mis a jour.</param>
+        /// <param name="id">L'ID de l'étudiant a mettre à jour.</param>
+        /// <param name="etudiant">L'objet étudiant mis à jour.</param>
         /// <remarks>
-        /// Cet endpoint met a jour un etudiant existant dans le systeme.
+        /// Cet endpoint met à jour un étudiant existant dans le système.
         /// </remarks>
-        /// <response code="204">L'etudiant a ete mis a jour avec succes.</response>
-        /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
-        /// <response code="404">Si l'etudiant a mettre a jour n'est pas trouve.</response>
+        /// <response code="204">L'étudiant a été mis à jour avec succes.</response>
+        /// <response code="400">Si l'ID dans l'URL ne correspond pas à l'ID dans le corps de la demande, ou si la demande est invalide.</response>
+        /// <response code="404">Si l'étudiant a mettre à jour n'est pas trouvé.</response>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Put(int id, [FromBody] Etudiants etudiant)
         {
             if (etudiant == null) return BadRequest("L'objet étudiant est nul.");
@@ -103,15 +108,16 @@ namespace ProjetWebAPI.Controllers
 
 
         /// <summary>
-        /// Supprimer un etudiant par ID.
+        /// Supprimer un étudiant par ID.
         /// </summary>
-        /// <param name="id">L'ID de l'etudiant a supprimer.</param>
+        /// <param name="id">L'ID de l'étudiant a supprimer.</param>
         /// <remarks>
-        /// Cet endpoint supprime un etudiant du systeme base sur l'ID fourni.
+        /// Cet endpoint supprime un étudiant du système base sur l'ID fourni.
         /// </remarks>
-        /// <response code="204">L'etudiant a ete supprime avec succes.</response>
-        /// <response code="404">Si l'etudiant a supprimer n'est pas trouve.</response>
+        /// <response code="204">L'étudiant a été supprimé avec succes.</response>
+        /// <response code="404">Si l'étudiant a supprimer n'est pas trouvé.</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Delete(int id)
         {
             var etudiantExistant = await _service.GetById(id);

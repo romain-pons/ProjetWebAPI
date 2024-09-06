@@ -1,12 +1,11 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using Microsoft.OpenApi.Any;
-using Microsoft.OpenApi.Interfaces;
 using Microsoft.OpenApi.Models;
 using ProjetWebAPI.Data;
 using System.Reflection;
 using System.Text;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -81,6 +80,30 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         ValidIssuer = builder.Configuration["Jwt:Issuer"],
                         ValidAudience = builder.Configuration["Jwt:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+                    };
+
+                    // Gestion des événements d'authentification
+                    options.Events = new JwtBearerEvents
+                    {
+                        // Gestion des utilisateurs non authentifiés
+                        OnChallenge = context =>
+                        {
+                            context.HandleResponse();
+
+                            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonSerializer.Serialize(new { message = "Accès refusé : Vous devez être authentifié pour accéder à cette route." });
+                            return context.Response.WriteAsync(result);
+                        },
+
+                        // Gestion des utilisateurs authentifiés mais sans le rôle adéquat
+                        OnForbidden = context =>
+                        {
+                            context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                            context.Response.ContentType = "application/json";
+                            var result = JsonSerializer.Serialize(new { message = "Accès interdit : Vous n'avez pas les droits nécessaires pour accéder à cette route." });
+                            return context.Response.WriteAsync(result);
+                        }
                     };
                 });
 

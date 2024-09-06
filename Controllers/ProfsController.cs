@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProjetWebAPI.Models;
@@ -23,6 +24,7 @@ namespace ProjetWebAPI.Controllers
         /// </remarks>
         /// <response code="200">Retourner la liste des professeurs.</response>
         [HttpGet]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get()
         {
             var professeurs = await _service.GetAll();
@@ -39,6 +41,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="200">Retourner le professeur demande.</response>
         /// <response code="404">Si le professeur n'est pas trouve.</response>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get(int id)
         {
             var professeur = await _service.GetById(id);
@@ -56,6 +59,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="201">Le professeur a ete cree avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
         [HttpPost]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Post([FromBody] Profs prof)
         {
             if (prof == null) return BadRequest("L'objet professeur est nul.");
@@ -76,6 +80,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
         /// <response code="404">Si le professeur a mettre a jour n'est pas trouve.</response>
         [HttpPut("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Put(int id, [FromBody] Profs prof)
         {
             if (prof == null) return BadRequest("L'objet professeur est nul.");
@@ -113,6 +118,7 @@ namespace ProjetWebAPI.Controllers
         /// <response code="204">Le professeur a ete supprime avec succes.</response>
         /// <response code="404">Si le professeur a supprimer n'est pas trouve.</response>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Delete(int id)
         {
             var professeurExistant = await _service.GetById(id);
@@ -123,3 +129,4 @@ namespace ProjetWebAPI.Controllers
         }
     }
 }
+

@@ -47,14 +47,14 @@ namespace ProjetWebAPI.Controllers
                 new Claim(ClaimTypes.Email, user.EmailAddress),
                 new Claim(ClaimTypes.GivenName, user.GivenName),
                 new Claim(ClaimTypes.Surname, user.Surname),
-                new Claim(ClaimTypes.Role, user.Role)
+                new Claim(ClaimTypes.Role, user.Roles)
             };
 
             var token = new JwtSecurityToken(_config["Jwt:Issuer"],
               _config["Jwt:Audience"],
               claims,
               expires: DateTime.Now.AddMinutes(15),
-            signingCredentials: credentials);
+              signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
