@@ -27,7 +27,6 @@ namespace ProjetWebAPI.Controllers
         /// Cet endpoint retourne la liste de tous les cours disponibles dans le système.
         /// </remarks>
         /// <response code="200">Retourne la liste des cours.</response>
-        /// <response code="404">Si le cours n'est pas trouvé.</response>
         [HttpGet]
         [Authorize(Roles = "Student")]
         public async Task<IActionResult> Get()
