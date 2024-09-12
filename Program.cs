@@ -115,11 +115,13 @@ builder.Services.AddScoped<CoursService>();
 var app = builder.Build();
 
 // Configuration de middleware
-if (app.Environment.IsDevelopment())
+/*if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+}*/
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
 
