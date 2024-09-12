@@ -17,12 +17,12 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Recuperer tous les etudiants.
+        /// Récupérer tous les etudiants.
         /// </summary>
         /// <remarks>
-        /// Cet endpoint retourne la liste de tous les etudiants disponibles dans le systeme.
+        /// Cet endpoint retourne la liste de tous les étudiants disponibles dans le système.
         /// </remarks>
-        /// <response code="200">Retourner la liste des etudiants.</response>
+        /// <response code="200">Retourner la liste des étudiants.</response>
         [HttpGet]
         [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get()
@@ -32,14 +32,14 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Recuperer un etudiant specifique par ID.
+        /// Récupérer un étudiant spécifique par ID.
         /// </summary>
-        /// <param name="id">L'ID de l'etudiant a recuperer.</param>
+        /// <param name="id">L'ID de l'étudiant a récupérer.</param>
         /// <remarks>
-        /// Cet endpoint retourne un etudiant unique base sur l'ID fourni.
+        /// Cet endpoint retourne un étudiant unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourner l'etudiant demande.</response>
-        /// <response code="404">Si l'etudiant n'est pas trouve.</response>
+        /// <response code="200">Retourner l'étudiant demandé.</response>
+        /// <response code="404">Si l'étudiant n'est pas trouvé.</response>
         [HttpGet("{id}")]
         [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get(int id)

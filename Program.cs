@@ -92,7 +92,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
                             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
                             context.Response.ContentType = "application/json";
-                            var result = JsonSerializer.Serialize(new { message = "Accès refusé : Vous devez être authentifié pour accéder à cette route." });
+                            var result = JsonSerializer.Serialize(new { message = "Access denied: You must be authenticated to access this route." });
                             return context.Response.WriteAsync(result);
                         },
 
@@ -101,7 +101,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                         {
                             context.Response.StatusCode = StatusCodes.Status403Forbidden;
                             context.Response.ContentType = "application/json";
-                            var result = JsonSerializer.Serialize(new { message = "Accès interdit : Vous n'avez pas les droits nécessaires pour accéder à cette route." });
+                            var result = JsonSerializer.Serialize(new { message = "Access Forbidden: You do not have the necessary permissions to access this route." });
                             return context.Response.WriteAsync(result);
                         }
                     };

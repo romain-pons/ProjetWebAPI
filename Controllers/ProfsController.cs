@@ -17,10 +17,10 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Recuperer tous les professeurs.
+        /// Récupérer tous les professeurs.
         /// </summary>
         /// <remarks>
-        /// Cet endpoint retourne la liste de tous les professeurs disponibles dans le systeme.
+        /// Cet endpoint retourne la liste de tous les professeurs disponibles dans le système.
         /// </remarks>
         /// <response code="200">Retourner la liste des professeurs.</response>
         [HttpGet]
@@ -32,14 +32,14 @@ namespace ProjetWebAPI.Controllers
         }
 
         /// <summary>
-        /// Recuperer un professeur specifique par ID.
+        /// Récuperer un professeur spécifique par ID.
         /// </summary>
-        /// <param name="id">L'ID du professeur a recuperer.</param>
+        /// <param name="id">L'ID du professeur a récupérer.</param>
         /// <remarks>
         /// Cet endpoint retourne un professeur unique base sur l'ID fourni.
         /// </remarks>
-        /// <response code="200">Retourner le professeur demande.</response>
-        /// <response code="404">Si le professeur n'est pas trouve.</response>
+        /// <response code="200">Retourner le professeur demandé.</response>
+        /// <response code="404">Si le professeur n'est pas trouvé.</response>
         [HttpGet("{id}")]
         [Authorize(Roles = "Professor,Student")]
         public async Task<IActionResult> Get(int id)
@@ -52,11 +52,11 @@ namespace ProjetWebAPI.Controllers
         /// <summary>
         /// Creer un nouveau professeur.
         /// </summary>
-        /// <param name="prof">L'objet professeur a creer.</param>
+        /// <param name="prof">L'objet professeur a créer.</param>
         /// <remarks>
-        /// Cet endpoint cree un nouveau professeur dans le systeme.
+        /// Cet endpoint crée un nouveau professeur dans le système.
         /// </remarks>
-        /// <response code="201">Le professeur a ete cree avec succes.</response>
+        /// <response code="201">Le professeur a été crée avec succes.</response>
         /// <response code="400">Si la demande est invalide.</response>
         [HttpPost]
         [Authorize(Roles = "Professor")]
@@ -74,11 +74,11 @@ namespace ProjetWebAPI.Controllers
         /// <param name="id">L'ID du professeur a mettre a jour.</param>
         /// <param name="prof">L'objet professeur mis a jour.</param>
         /// <remarks>
-        /// Cet endpoint met a jour un professeur existant dans le systeme.
+        /// Cet endpoint met a jour un professeur existant dans le système.
         /// </remarks>
-        /// <response code="204">Le professeur a ete mis a jour avec succes.</response>
+        /// <response code="204">Le professeur a été mis a jour avec succes.</response>
         /// <response code="400">Si l'ID dans l'URL ne correspond pas a l'ID dans le corps de la demande, ou si la demande est invalide.</response>
-        /// <response code="404">Si le professeur a mettre a jour n'est pas trouve.</response>
+        /// <response code="404">Si le professeur a mettre a jour n'est pas trouvé.</response>
         [HttpPut("{id}")]
         [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Put(int id, [FromBody] Profs prof)
@@ -113,10 +113,10 @@ namespace ProjetWebAPI.Controllers
         /// </summary>
         /// <param name="id">L'ID du professeur a supprimer.</param>
         /// <remarks>
-        /// Cet endpoint supprime un professeur du systeme base sur l'ID fourni.
+        /// Cet endpoint supprime un professeur du système base sur l'ID fourni.
         /// </remarks>
-        /// <response code="204">Le professeur a ete supprime avec succes.</response>
-        /// <response code="404">Si le professeur a supprimer n'est pas trouve.</response>
+        /// <response code="204">Le professeur a été supprimé avec succes.</response>
+        /// <response code="404">Si le professeur a supprimer n'est pas trouvé.</response>
         [HttpDelete("{id}")]
         [Authorize(Roles = "Professor")]
         public async Task<IActionResult> Delete(int id)

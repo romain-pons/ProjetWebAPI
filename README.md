@@ -9,47 +9,47 @@ Adrien AUTEF - [GitHub](https://github.com/AdrienAUTEF)
 
 ## Description
 
-SchoolDB API est un projet d'API RESTful développé en ASP.NET Core. Il permet la gestion d'une base de données de l'école, incluant des entités telles que les étudiants, les professeurs et les cours. Le projet inclut également un front-end simple, développé en HTML, CSS et JavaScript, situé dans le dossier `wwwroot`.
+SchoolDB API est un projet d'API RESTful dÃ©veloppÃ© en ASP.NET Core. Il permet la gestion d'une base de donnÃ©es de l'Ã©cole, incluant des entitÃ©s telles que les Ã©tudiants, les professeurs et les cours. Le projet inclut Ã©galement un front-end simple, dÃ©veloppÃ© en HTML, CSS et JavaScript, situÃ© dans le dossier `wwwroot`.
 
-## Prérequis
+## PrÃ©requis
 
-Avant de lancer le projet, assurez-vous d'avoir installé les éléments suivants :
+Avant de lancer le projet, assurez-vous d'avoir installÃ© les Ã©lÃ©ments suivants :
 
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
 - [MySQL Server](https://dev.mysql.com/downloads/mysql/)
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) (facultatif mais recommandé pour l'édition et le debug)
-- Un client MySQL (tel que MySQL Workbench) pour gérer la base de données.
+- [Visual Studio 2022](https://visualstudio.microsoft.com/) ou [Visual Studio Code](https://code.visualstudio.com/) (facultatif mais recommandÃ© pour l'Ã©dition et le debug)
+- Un client MySQL (tel que MySQL Workbench) pour gÃ©rer la base de donnÃ©es.
 
 ## Structure du projet
-Controllers/ : Contient les contrôleurs de l'API qui gèrent les différentes routes pour les entités Etudiant, Prof, et Cour.
-Models/ : Définit les modèles de données utilisés dans l'API.
-Data/ : Contient le contexte de base de données (AppDbContext) et les services qui interagissent avec la base de données.
+Controllers/ : Contient les contrÃ©leurs de l'API qui gÃ©rent les diffÃ©rentes routes pour les entitÃ©s Etudiant, Prof, et Cour.
+Models/ : DÃ©finit les modÃ©les de donnÃ©es utilisÃ©s dans l'API.
+Data/ : Contient le contexte de base de donnÃ©es (AppDbContext) et les services qui interagissent avec la base de donnÃ©es.
 wwwroot/ : Contient les fichiers du front-end, incluant HTML, CSS, et JavaScript.
-appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion à la base de données.
+appsettings.json : Contient la configuration de l'application, notamment la chaÃ®ne de connexion Ã© la base de donnÃ©es.
 
 ## Installation
 
-### 1. Clonez le dépôt
+### 1. Clonez le dÃ©pÃ©t
 
-Clonez le dépôt GitHub du projet à l'aide de la commande suivante :
+Clonez le dÃ©pÃ©t GitHub du projet Ã  l'aide de la commande suivante :
 
 ```bash
 git clone https://github.com/romain-pons/ProjetWebAPI.git
 cd ProjetWebAPI
 ```
 
-### 2. Configurer la base de données MySQL
+### 2. Configurer la base de donnÃ©es MySQL
 
-Vous devez configurer une base de données MySQL pour le projet. Vous pouvez soit utiliser une base de données MySQL locale, soit une base de données MySQL hébergée sur le cloud, comme celle mentionnée dans appsettings.json.
+Vous devez configurer une base de donnÃ©es MySQL pour le projet. Vous pouvez soit utiliser une base de donnÃ©es MySQL locale, soit une base de donnÃ©es MySQL hÃ©bergÃ©e sur le cloud, comme celle mentionnÃ©e dans appsettings.json.
 
-Créer la base de données
-Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
+CrÃ©er la base de donnÃ©es
+Si vous n'avez pas encore de base de donnÃ©es, connectez-vous Ã  votre serveur MySQL et exÃ©cutez la commande suivante pour crÃ©er la base de donnÃ©es :
 ```SQL
 CREATE DATABASE SchoolDB;
 ```
 
-## Mettre à jour la chaîne de connexion
-Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
+## Mettre Ã© jour la chaÃ®ne de connexion
+Assurez-vous que la chaÃ®ne de connexion dans le fichier appsettings.json est correcte et correspond Ã  votre configuration MySQL :
 
 ```json
 "ConnectionStrings": {
@@ -57,37 +57,37 @@ Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est cor
 }
 ```
 
-Remplacez <votre_serveur>, <votre_utilisateur>, et <votre_mot_de_passe> par les informations appropriées.
+Remplacez <votre_serveur>, <votre_utilisateur>, et <votre_mot_de_passe> par les informations appropriÃ©es.
 
-### 3. Appliquer les migrations de la base de données
-Une fois la base de données créée et la chaîne de connexion configurée, appliquez les migrations pour initialiser la base de données avec les tables nécessaires :
+### 3. Appliquer les migrations de la base de donnÃ©es
+Une fois la base de donnÃ©es crÃ©Ã©e et la chaÃ®ne de connexion configurÃ©e, appliquez les migrations pour initialiser la base de donnÃ©es avec les tables nÃ©cessaires :
 ```cmd
 dotnet ef database update
 ```
 
 ### 4. Lancer l'application
 
-Vous pouvez maintenant lancer l'application. Assurez-vous d'être dans le répertoire racine du projet, puis exécutez :
+Vous pouvez maintenant lancer l'application. Assurez-vous d'Ã©tre dans le rÃ©pertoire racine du projet, puis exÃ©cutez :
 
 ```cmd
 dotnet run
 ```
 
-L'API sera accessible à l'adresse suivante : https://localhost:7173.
+L'API sera accessible Ã© l'adresse suivante : https://localhost:7173.
 
-### 5. Accéder à Swagger
+### 5. AccÃ©der Ã© Swagger
 
-Swagger est intégré pour la documentation et le test de l'API. Une fois l'application en cours d'exécution, ouvrez votre navigateur et accédez à :
+Swagger est intÃ©grÃ© pour la documentation et le test de l'API. Une fois l'application en cours d'exÃ©cution, ouvrez votre navigateur et accÃ©dez Ã  :
 
 ```URL
 https://localhost:7173/swagger/index.html
 ```
 
-### 6. Accéder au Front-end
+### 6. AccÃ©der au Front-end
 
 A MODIFIER
 
-Le projet contient un front-end simple dans le dossier wwwroot. Vous pouvez y accéder en ouvrant directement :
+Le projet contient un front-end simple dans le dossier wwwroot. Vous pouvez y accÃ©der en ouvrant directement :
 
 ```URL
 https://localhost:7173/index.html
