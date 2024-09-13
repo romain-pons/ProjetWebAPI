@@ -46,7 +46,7 @@ cd ProjetWebAPI
 
 Vous devez configurer une base de données MySQL pour le projet. Vous pouvez soit utiliser une base de données MySQL locale, soit une base de données MySQL hébergée sur le cloud, comme celle mentionnée dans appsettings.json.
 
-**Connexion à notre base**
+## Connexion à notre base
 
 Créer la base de données
 Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
@@ -65,7 +65,7 @@ Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est co
 }
 ```
 
-**Connexion à votre base créée en local**
+## Connexion à votre base créée en local
 
 Créer la base de données
 Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
