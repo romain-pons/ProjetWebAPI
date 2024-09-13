@@ -82,13 +82,3 @@ Swagger est intégré pour la documentation et le test de l'API. Une fois l'appl
 ```URL
 https://localhost:7173/swagger/index.html
 ```
-
-### 6. Accéder au Front-end
-
-A MODIFIER
-
-Le projet contient un front-end simple dans le dossier wwwroot. Vous pouvez y accéder en ouvrant directement :
-
-```URL
-https://localhost:7173/index.html
-```
