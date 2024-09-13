@@ -81,10 +81,9 @@ namespace ProjetWebAPI.Controllers
         /// <response code="404">Si l'étudiant a mettre à jour n'est pas trouvé.</response>
         [HttpPut("{id}")]
         [Authorize(Roles = "Professor")]
-        public async Task<IActionResult> Put(int id, [FromBody] Etudiants etudiant)
+        public async Task<IActionResult> Put(int id, [FromBody] EtudiantsUpdate etudiant)
         {
             if (etudiant == null) return BadRequest("L'objet étudiant est nul.");
-            if (id != etudiant.Id) return BadRequest("Incohérence d'ID.");
 
             var etudiantExistant = await _service.GetById(id);
             if (etudiantExistant == null) return NotFound();

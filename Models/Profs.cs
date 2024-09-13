@@ -7,4 +7,11 @@
         public string Prenom { get; set; }
         public string Matiere { get; set; }
     }
+
+    public class ProfsUpdate
+    {
+        public string Nom { get; set; }
+        public string Prenom { get; set; }
+        public string Matiere { get; set; }
+    }
 }

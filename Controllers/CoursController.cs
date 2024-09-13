@@ -88,13 +88,12 @@ namespace ProjetWebAPI.Controllers
         /// <response code="404">Si le cours à mettre à jour n'est pas trouvé.</response>
         [HttpPut("{id}")]
         [Authorize(Roles = "Professor")]
-        public async Task<IActionResult> Put(int id, [FromBody] Cours updatedCours)
+        public async Task<IActionResult> Put(int id, [FromBody] CoursUpdate cours)
         {
-            if (updatedCours == null) return BadRequest("L'objet cours est nul.");
-            if (id != updatedCours.Id) return BadRequest("Incohérence d'ID.");
+            if (cours == null) return BadRequest("L'objet cours est nul.");
 
             // Vérifie si le professeur existe
-            var prof = await _context.Profs.FindAsync(updatedCours.ProfId);
+            var prof = await _context.Profs.FindAsync(cours.ProfId);
             if (prof == null) return BadRequest("Le professeur spécifié n'existe pas.");
 
             // Récupérer l'entité existante
@@ -102,9 +101,9 @@ namespace ProjetWebAPI.Controllers
             if (coursExistant == null) return NotFound();
 
             // Mettre à jour manuellement les propriétés de l'entité existante
-            coursExistant.Titre = updatedCours.Titre;
-            coursExistant.Description = updatedCours.Description;
-            coursExistant.ProfId = updatedCours.ProfId;
+            coursExistant.Titre = cours.Titre;
+            coursExistant.Description = cours.Description;
+            coursExistant.ProfId = cours.ProfId;
 
             try
             {
