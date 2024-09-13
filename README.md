@@ -46,19 +46,41 @@ cd ProjetWebAPI
 
 Vous devez configurer une base de données MySQL pour le projet. Vous pouvez soit utiliser une base de données MySQL locale, soit une base de données MySQL hébergée sur le cloud, comme celle mentionnée dans appsettings.json.
 
+**Connexion à notre base**
+
 Créer la base de données
 Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
 ```SQL
 CREATE DATABASE SchoolDB;
 ```
 Puis utilisez les fichiers dans le dossier Data pour recréer la structure de la base avec des données initiales (si vous voulez tester en local).
+Le fichier *schema-mysql.sql* va créer la structure et *values.sql* va ajouter des valeurs aux tables créées.
+
+## Mettre à jour la chaîne de connexion
+Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte :
+
+```json
+"ConnectionStrings": {
+  "DefaultConnection": "server=projetwebapiserver.mysql.database.azure.com;port=3306;database=SchoolDB;user=ProjetWebAPI;password=root666!;sslmode=required;"
+}
+```
+
+**Connexion à votre base créée en local**
+
+Créer la base de données
+Si vous n'avez pas encore de base de données, connectez-vous à votre serveur MySQL et exécutez la commande suivante pour créer la base de données :
+```SQL
+CREATE DATABASE SchoolDB;
+```
+Puis utilisez les fichiers dans le dossier Data pour recréer la structure de la base avec des données initiales (si vous voulez tester en local).
+Le fichier *schema-mysql.sql* va créer la structure et *values.sql* va ajouter des valeurs aux tables créées.
 
 ## Mettre à jour la chaîne de connexion
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "server=projetwebapiserver.mysql.database.azure.com;port=3306;database=SchoolDB;user=ProjetWebAPI;password=root666!;sslmode=required;"
+  "DefaultConnection": "server=<votre_serveur>;port=3306;database=SchoolDB;user=<votre_utilisateur>;password=<votre_mot_de_passe>;sslmode=required;"
 }
 ```
 
