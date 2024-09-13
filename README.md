@@ -72,10 +72,13 @@ dotnet run
 
 L'API sera accessible à l'adresse suivante : https://localhost:7173.
 
-### 5. Accéder à Swagger
+### 5. Accéder à Swagger en local
 
 Swagger est intégré pour la documentation et le test de l'API. Une fois l'application en cours d'exécution, ouvrez votre navigateur et accédez à :
 
 ```URL
 https://localhost:7173/swagger/index.html
 ```
+
+### 6. API déployée
+Cette API est également déjà déployée sur Azure à l'adresse suivante : [API déployée](https://projetwebapi-romain-adrien-julien.azurewebsites.net/)
