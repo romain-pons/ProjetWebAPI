@@ -27,7 +27,7 @@ Models/ : Définit les modéles de données utilisés dans l'API.
 
 Data/ : Contient le contexte de base de données (AppDbContext) et les services qui interagissent avec la base de données.
 
-appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion é la base de données.
+appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion à la base de données.
 
 ## Installation
 
