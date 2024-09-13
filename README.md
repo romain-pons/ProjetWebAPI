@@ -24,14 +24,13 @@ Avant de lancer le projet, assurez-vous d'avoir installé les éléments suivant
 Controllers/ : Contient les contréleurs de l'API qui gérent les différentes routes pour les entités Etudiant, Prof, et Cour.
 Models/ : Définit les modéles de données utilisés dans l'API.
 Data/ : Contient le contexte de base de données (AppDbContext) et les services qui interagissent avec la base de données.
-wwwroot/ : Contient les fichiers du front-end, incluant HTML, CSS, et JavaScript.
 appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion é la base de données.
 
 ## Installation
 
-### 1. Clonez le dépét
+### 1. Clonez le dépôt
 
-Clonez le dépét GitHub du projet à l'aide de la commande suivante :
+Clonez le dépôt GitHub du projet à l'aide de la commande suivante :
 
 ```bash
 git clone https://github.com/romain-pons/ProjetWebAPI.git
@@ -48,7 +47,7 @@ Si vous n'avez pas encore de base de données, connectez-vous à votre serveur M
 CREATE DATABASE SchoolDB;
 ```
 
-## Mettre é jour la chaîne de connexion
+## Mettre à jour la chaîne de connexion
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
 
 ```json
@@ -73,9 +72,9 @@ Vous pouvez maintenant lancer l'application. Assurez-vous d'étre dans le réper
 dotnet run
 ```
 
-L'API sera accessible é l'adresse suivante : https://localhost:7173.
+L'API sera accessible à l'adresse suivante : https://localhost:7173.
 
-### 5. Accéder é Swagger
+### 5. Accéder à Swagger
 
 Swagger est intégré pour la documentation et le test de l'API. Une fois l'application en cours d'exécution, ouvrez votre navigateur et accédez à :
 
