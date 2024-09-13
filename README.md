@@ -23,9 +23,11 @@ Avant de lancer le projet, assurez-vous d'avoir installé les éléments suivant
 ## Structure du projet
 Controllers/ : Contient les contréleurs de l'API qui gérent les différentes routes pour les entités Etudiants, Profs, et Cours.
 
-Models/ : Définit les modéles de données utilisés dans l'API.
+Models/ : Définit les modèles de données utilisés dans l'API.
 
-Data/ : Contient le contexte de base de données (AppDbContext) et les services qui interagissent avec la base de données.
+Data/ : Contient le contexte de base de données (AppDbContext) et les scripts à utiliser pour créer la base en local.
+
+Services : Contient les services qui interagissent avec la base de données.
 
 appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion à la base de données.
 
@@ -49,6 +51,7 @@ Si vous n'avez pas encore de base de données, connectez-vous à votre serveur M
 ```SQL
 CREATE DATABASE SchoolDB;
 ```
+Puis utilisez les fichiers dans le dossier Data pour recréer la structure de la base avec des données initiales (si vous voulez tester en local).
 
 ## Mettre à jour la chaîne de connexion
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
