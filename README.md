@@ -52,11 +52,9 @@ Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est co
 
 ```json
 "ConnectionStrings": {
-  "DefaultConnection": "server=<votre_serveur>;port=3306;database=SchoolDB;user=<votre_utilisateur>;password=<votre_mot_de_passe>;sslmode=required;"
+  "DefaultConnection": "server=projetwebapiserver.mysql.database.azure.com;port=3306;database=SchoolDB;user=ProjetWebAPI;password=root666!;sslmode=required;"
 }
 ```
-
-Remplacez <votre_serveur>, <votre_utilisateur>, et <votre_mot_de_passe> par les informations appropriées.
 
 ### 3. Appliquer les migrations de la base de données
 Une fois la base de données créée et la chaîne de connexion configurée, appliquez les migrations pour initialiser la base de données avec les tables nécessaires :
