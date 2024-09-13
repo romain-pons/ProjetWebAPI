@@ -9,7 +9,7 @@ Adrien AUTEF - [GitHub](https://github.com/AdrienAUTEF)
 
 ## Description
 
-SchoolDB API est un projet d'API RESTful développé en ASP.NET Core. Il permet la gestion d'une base de données de l'école, incluant des entités telles que les étudiants, les professeurs et les cours. Le projet inclut également un front-end simple, développé en HTML, CSS et JavaScript, situé dans le dossier `wwwroot`.
+SchoolDB API est un projet d'API RESTful développé en ASP.NET Core. Il permet la gestion d'une base de données de l'école, incluant des entités telles que les étudiants, les professeurs et les cours.
 
 ## Prérequis
 
@@ -21,9 +21,12 @@ Avant de lancer le projet, assurez-vous d'avoir installé les éléments suivant
 - Un client MySQL (tel que MySQL Workbench) pour gérer la base de données.
 
 ## Structure du projet
-Controllers/ : Contient les contréleurs de l'API qui gérent les différentes routes pour les entités Etudiant, Prof, et Cour.
+Controllers/ : Contient les contréleurs de l'API qui gérent les différentes routes pour les entités Etudiants, Profs, et Cours.
+
 Models/ : Définit les modéles de données utilisés dans l'API.
+
 Data/ : Contient le contexte de base de données (AppDbContext) et les services qui interagissent avec la base de données.
+
 appsettings.json : Contient la configuration de l'application, notamment la chaîne de connexion é la base de données.
 
 ## Installation
