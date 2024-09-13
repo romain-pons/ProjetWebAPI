@@ -56,7 +56,7 @@ CREATE DATABASE SchoolDB;
 Puis utilisez les fichiers dans le dossier Data pour recréer la structure de la base avec des données initiales (si vous voulez tester en local).
 Le fichier *schema-mysql.sql* va créer la structure et *values.sql* va ajouter des valeurs aux tables créées.
 
-## Mettre à jour la chaîne de connexion
+**Mettre à jour la chaîne de connexion**
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte :
 
 ```json
@@ -75,7 +75,7 @@ CREATE DATABASE SchoolDB;
 Puis utilisez les fichiers dans le dossier Data pour recréer la structure de la base avec des données initiales (si vous voulez tester en local).
 Le fichier *schema-mysql.sql* va créer la structure et *values.sql* va ajouter des valeurs aux tables créées.
 
-## Mettre à jour la chaîne de connexion
+**Mettre à jour la chaîne de connexion**
 Assurez-vous que la chaîne de connexion dans le fichier appsettings.json est correcte et correspond à votre configuration MySQL :
 
 ```json
